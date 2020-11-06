@@ -3,9 +3,9 @@ from help_functions import add_element_in_db,delete_element_in_db
 
 class Expense(Transaction):
     def __init__(self):
-        self.expense_loop()
+        self.loop()
 
-    def expense_loop(self):
+    def loop(self):
         print('Add or Delete an expenditures? yes/no:')
         a_or_d=str(input())
         if a_or_d.lower() in 'yes':
@@ -24,8 +24,8 @@ class Expense(Transaction):
                     print('Do you want to add more?')
                     add=str(input()) 
             except Exception:
-                print('Your format was NOT correct. Try again!')
-                add='yes'    
+                print('Your format was NOT correct. Try again (t) or quit (q)!')
+                add=str(input())    
     def delete_element(self):
         print('Delete your Expenditures/Income in following format (Type a category or "ALL" for everything): category/description/month/year :')
         delete='y'
@@ -37,6 +37,6 @@ class Expense(Transaction):
                     print('Do you want to delete more?')
                     delete=str(input())
             except Exception:
-                print('Your format was NOT correct. Try again!')
-                delete='y'
+                print('Your format was NOT correct. Try again (t) or quit (q)!')
+                delete=str(input()) 
     

@@ -1,5 +1,5 @@
 from budget import Budget
-from transactions import Expense
+from expense import Expense
 from viewer import View
 
 print('Hello there! Please enter your informations so that I am able to help you')

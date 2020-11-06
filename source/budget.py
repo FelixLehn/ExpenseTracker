@@ -6,9 +6,9 @@ from help_functions import add_element_in_db,delete_element_in_db
 
 class Budget(Transaction):
     def __init__(self):
-        self.budget_loop()
+        self.loop()
 
-    def budget_loop(self):
+    def loop(self):
         """
         Asks for add or deletion of a Budget in a Loop
         """
@@ -30,8 +30,9 @@ class Budget(Transaction):
                     print('Do you want to add more?')
                     add=str(input()) 
             except Exception:
-                print('Your format was NOT correct. Try again!')
-                add='yes'    
+                print('Your format was NOT correct. Try again (t) or quit (q)!')
+                add=str(input()) 
+
     def delete_element(self):
         print('Delete your Budget in following format (Type a category or "ALL" for everything): category :')
         delete='y'
@@ -43,8 +44,8 @@ class Budget(Transaction):
                     print('Do you want to delete more?')
                     delete=str(input())
             except Exception:
-                print('Your format was NOT correct. Try again!')
-                delete='y'
+                print('Your format was NOT correct. Try again (t) or quit (q)!')
+                delete=str(input()) 
     
 
 
