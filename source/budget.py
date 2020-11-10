@@ -1,24 +1,27 @@
 import sqlite3 as db 
 import datetime
 from interfaces import Transaction
+from viewercategorizer import ViewerCategorizer
 from help_functions import add_element_in_db,delete_element_in_db
 
 
-class Budget(Transaction):
+class Budget(Transaction,ViewerCategorizer):
     def __init__(self):
+        super().__init__('budget')
         self.loop()
 
     def loop(self):
         """
         Asks for add or deletion of a Budget in a Loop
         """
-        print('Create or Delete Budget? C:D')
-        c_or_d=str(input())
-        if c_or_d.lower() in 'create':
+        print('Create (C) / Delete (D) / View (V) Budget? C:D:V')
+        select=str(input())
+        if select.lower() in 'create':
             self.add_element()
-        else:
+        elif select.lower() in 'delete':
             self.delete_element()
-
+        else:
+            super().view_loop()
     def add_element(self):
         print('Enter your Budget for every month in following format (Type a category or "ALL" for everything): category/amount/description :')
         add='y'
@@ -47,6 +50,7 @@ class Budget(Transaction):
                 print('Your format was NOT correct. Try again (t) or quit (q)!')
                 delete=str(input()) 
     
+        
 
 
 

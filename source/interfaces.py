@@ -23,3 +23,4 @@ class Transaction(metaclass=ABCMeta):
     def loop(self):
         raise NotImplementedError
 
+

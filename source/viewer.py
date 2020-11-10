@@ -4,13 +4,10 @@ import numpy as np
 
 class View():
     def __init__(self):
-        self.view_loop()
+        pass
     
-    def view_loop(self):
-        print('Do you want to see your expenses (press e), your budget (press b):')
-        view='budget' if str(input())=='b' else 'expenditures'
-        self.view_barchart(view)
-        results= data_db(view)
+    def view_results(self,membership):
+        results= data_db(membership)
         for entry in results:
             print(('\t|\t'.join([str(e) for e in entry])))
     

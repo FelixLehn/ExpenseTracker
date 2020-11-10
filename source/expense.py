@@ -1,17 +1,21 @@
 from interfaces import Transaction
+from viewercategorizer import ViewerCategorizer
 from help_functions import add_element_in_db,delete_element_in_db
 
-class Expense(Transaction):
+class Expense(Transaction,ViewerCategorizer):
     def __init__(self):
+        super().__init__('expenditures')
         self.loop()
 
     def loop(self):
-        print('Add or Delete an expenditures? yes/no:')
-        a_or_d=str(input())
-        if a_or_d.lower() in 'yes':
+        print('Add (A) / Delete (D) / View (V) an expenditures? A/D/V:')
+        select=str(input())
+        if select.lower() in 'add':
             self.add_element()
-        else:
+        elif select.lower() in 'delete':
             self.delete_element()
+        else:
+            super().view_loop()
     
     def add_element(self):
         print('Enter your Expense(-)/Income(+) in following format in following format: category/amount/description')
@@ -24,10 +28,10 @@ class Expense(Transaction):
                     print('Do you want to add more?')
                     add=str(input()) 
             except Exception:
-                print('Your format was NOT correct. Try again (t) or quit (q)!')
+                print('Your format was NOT correct. Try again (y) or quit (q)!')
                 add=str(input())    
     def delete_element(self):
-        print('Delete your Expenditures/Income in following format (Type a category or "ALL" for everything): category/description/month/year :')
+        print('Delete your Expenditures/Income in following format (Type a category): category/description/month/year :')
         delete='y'
         while delete in ['yes','y']:
             try:

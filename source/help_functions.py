@@ -9,7 +9,9 @@ def add_element_in_db(membership:str,category, amount, message="",month="",year=
     membership -> budget or expenses
     period -> month or year
     '''
-    date=str(datetime.date.today())
+    date=datetime.date.today()
+    if not month:
+        year,month=date.year,date.month
     conn=db.connect("expense.db")
     cur=conn.cursor()
     query_create_db='''
