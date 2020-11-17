@@ -1,6 +1,6 @@
 from budget import Budget
 from expense import Expense
-from viewer import View
+from viewercategorizer import ViewerCategorizer
 
 print('Hello there! Please enter your informations so that I am able to help you')
 print('What do you want to do? ' )
@@ -13,7 +13,7 @@ while b_or_e.lower()!='q':
     elif b_or_e.lower() == 'e':
         Expense()
     elif b_or_e.lower() == 'v':
-        View()
+        ViewerCategorizer().view_loop()
 
 
 

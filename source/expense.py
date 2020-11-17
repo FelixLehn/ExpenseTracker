@@ -19,6 +19,8 @@ class Expense(Transaction,ViewerCategorizer):
     
     def add_element(self):
         print('Enter your Expense(-)/Income(+) in following format in following format: category/amount/description')
+        print('Possible Categories are : Transport | Household | Abos | Restaurants | Education | Food | Family | Entertainment | Shopping | Investment | Health | Leisure | Other')
+
         add='y'
         while add.lower() in ['yes','y']:
             try:
@@ -32,6 +34,8 @@ class Expense(Transaction,ViewerCategorizer):
                 add=str(input())    
     def delete_element(self):
         print('Delete your Expenditures/Income in following format (Type a category): category/description/month/year :')
+        print('Possible Categories are : Transport | Household | Abos | Restaurants | Education | Food | Family | Entertainment | Shopping | Investment | Health | Leisure | Other')
+
         delete='y'
         while delete in ['yes','y']:
             try:
