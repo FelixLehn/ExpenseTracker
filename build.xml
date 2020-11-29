@@ -1,0 +1,25 @@
+<?xml version = "1.0"?>
+<project name = "fax" basedir = "." default = "ALL">
+   <property name = "src.dir" value = "src"/>
+   <property name = "web.dir" value = "web"/>
+   <property name = "build.dir" value = "${web.dir}/WEB-INF/classes"/>
+	
+   <target name = "ALL" depends="CLEAN,GETGITHUB,COMPILE,INTEGRATE,RUN,TEST,DOCUMENT" description = "Compile ALL targets">
+   </target>
+	
+   <target name = "CLEAN" description = "Clean Output directory">
+   </target>
+   <target name = "GETGITHUB" description = "Get Github Files">
+   </target>
+   <target name = "COMPILE" description = "Compile ">
+   </target>
+   <target name = "INTEGRATE" description = "Integrate">
+   </target>
+   <target name = "RUN" description = "Run">
+   </target>
+   <target name = "TEST" description = "Test program functions">
+   </target>
+   <target name = "DOCUMENT" description = "Document all">
+   </target>
+
+</project>
