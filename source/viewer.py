@@ -32,7 +32,7 @@ class View():
                 GROUP BY category 
                 ORDER BY sum(amount) DESC
                 '''
-        query_expense='''SELECT category, sum(amount)
+        query_expense='''SELECT category, sum(  amount)
                 FROM expenditures
                 GROUP BY category 
                 ORDER BY sum(amount) DESC

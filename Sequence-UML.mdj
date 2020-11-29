@@ -2831,9 +2831,9 @@
 													"font": "Arial;13;1",
 													"left": 85,
 													"top": 47,
-													"width": 62.736328125,
+													"width": 72.11181640625,
 													"height": 13,
-													"text": "Main"
+													"text": "Controller"
 												},
 												{
 													"_type": "LabelView",
@@ -2862,7 +2862,7 @@
 											"font": "Arial;13;0",
 											"left": 80,
 											"top": 40,
-											"width": 72.736328125,
+											"width": 82.11181640625,
 											"height": 40,
 											"stereotypeLabel": {
 												"$ref": "AAAAAAF11dxrI9zK2Xc="
@@ -2887,7 +2887,7 @@
 												"$ref": "AAAAAAF11dxrItzHMi8="
 											},
 											"font": "Arial;13;0",
-											"left": 116,
+											"left": 121,
 											"top": 80,
 											"width": 1,
 											"height": 353
@@ -2896,7 +2896,7 @@
 									"font": "Arial;13;0",
 									"left": 80,
 									"top": 40,
-									"width": 72.736328125,
+									"width": 82.11181640625,
 									"height": 393,
 									"nameCompartment": {
 										"$ref": "AAAAAAF11dxrI9zJUv4="
@@ -3380,7 +3380,7 @@
 												"$ref": "AAAAAAF11d9vvN1u94A="
 											},
 											"font": "Arial;13;0",
-											"left": 101,
+											"left": 104,
 											"top": 112,
 											"width": 174.64306640625,
 											"height": 13,
@@ -3403,7 +3403,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 188,
+											"left": 191,
 											"top": 97,
 											"height": 13,
 											"alpha": 1.5707963267948966,
@@ -3424,7 +3424,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 188,
+											"left": 191,
 											"top": 132,
 											"height": 13,
 											"alpha": -1.5707963267948966,
@@ -3457,7 +3457,7 @@
 									"tail": {
 										"$ref": "AAAAAAF11dxrI9zO9wQ="
 									},
-									"points": "116:128;261:128",
+									"points": "121:128;261:128",
 									"nameLabel": {
 										"$ref": "AAAAAAF11d9vvd1wa6w="
 									},
@@ -4047,7 +4047,7 @@
 												"$ref": "AAAAAAF11eZ12N6PdRo="
 											},
 											"font": "Arial;13;0",
-											"left": 169,
+											"left": 171,
 											"top": 248,
 											"width": 168.14306640625,
 											"height": 13,
@@ -4070,7 +4070,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 253,
+											"left": 255,
 											"top": 233,
 											"height": 13,
 											"alpha": 1.5707963267948966,
@@ -4091,7 +4091,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 253,
+											"left": 255,
 											"top": 268,
 											"height": 13,
 											"alpha": -1.5707963267948966,
@@ -4124,7 +4124,7 @@
 									"tail": {
 										"$ref": "AAAAAAF11dxrI9zO9wQ="
 									},
-									"points": "116:264;390:264",
+									"points": "121:264;390:264",
 									"nameLabel": {
 										"$ref": "AAAAAAF11eZ12N6R3g4="
 									},
@@ -4876,7 +4876,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF11dxS7dy42NM="
 							},
-							"name": "Main",
+							"name": "Controller",
 							"represent": {
 								"$ref": "AAAAAAF11dxrItzGSxA="
 							},
@@ -4948,7 +4948,8 @@
 					"_parent": {
 						"$ref": "AAAAAAF11dxS7Ny39AY="
 					},
-					"name": "Role2"
+					"name": "Role2",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -4956,7 +4957,8 @@
 					"_parent": {
 						"$ref": "AAAAAAF11dxS7Ny39AY="
 					},
-					"name": "Role3"
+					"name": "Role3",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -4964,7 +4966,8 @@
 					"_parent": {
 						"$ref": "AAAAAAF11dxS7Ny39AY="
 					},
-					"name": "Role4"
+					"name": "Role4",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -4972,7 +4975,8 @@
 					"_parent": {
 						"$ref": "AAAAAAF11dxS7Ny39AY="
 					},
-					"name": "Role5"
+					"name": "Role5",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
