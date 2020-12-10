@@ -1,5 +1,5 @@
 <?xml version = "1.0"?>
-<project name = "fax" basedir = "." default = "ALL">
+<project name = "fax" basedir = "." default = "RUN">
    <property name = "src.dir" value = "src"/>
    <property name = "web.dir" value = "web"/>
    <property name = "build.dir" value = "${web.dir}/WEB-INF/classes"/>
@@ -16,6 +16,7 @@
    <target name = "INTEGRATE" description = "Integrate">
    </target>
    <target name = "RUN" description = "Run">
+   	
    </target>
    <target name = "TEST" description = "Test program functions">
    </target>

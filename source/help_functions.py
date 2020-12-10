@@ -1,7 +1,8 @@
 import sqlite3 as db 
 import datetime
+import dateutil.parser as parser
 
-def add_element_in_db(membership:str,category, amount, message="",month="",year=""):
+def add_element_in_db(*args,**kwargs):
     '''
     adds expenditures/budgets in the database
 
@@ -9,39 +10,46 @@ def add_element_in_db(membership:str,category, amount, message="",month="",year=
     membership -> budget or expenses
     period -> month or year
     '''
+
     date=datetime.date.today()
-    if not month:
-        year,month=date.year,date.month
+    year,month=(date.year,date.month) if len(kwargs.values())<5 else (kwargs['year'],kwargs['month'])
+    date=parser.parse(str(date.day)+'-'+month+'-'+year,dayfirst=True) 
     conn=db.connect("expense.db")
     cur=conn.cursor()
     query_create_db='''
-    CREATE TABLE '{}' (category STRING, amount NUMBER, message STRING, date STRING,month STRING,year NUMBER )'''.format(membership)
-    query='''INSERT INTO '{}' VALUES (?,?,?,?,?,?)'''.format(membership)
+    CREATE TABLE '{}' (category STRING, amount NUMBER, message STRING, date STRING,month STRING,year NUMBER )'''.format(args[0])
+    query='''INSERT INTO '{}' VALUES (?,?,?,?,?,?)'''.format(args[0])
     cur.execute(
-        ''' SELECT count(name) FROM sqlite_master WHERE type='table' AND name='{}' '''.format(membership))
+        ''' SELECT count(name) FROM sqlite_master WHERE type='table' AND name='{}' '''.format(args[0]))
     if cur.fetchone()[0] < 1:
         cur.execute(query_create_db)
-        cur.execute(query,(category,amount,message,date,month,year))
+        cur.execute(query,(kwargs['category'],kwargs['amount'],kwargs['message'],date,date.month,date.year))
 
     else:
-        cur.execute(query,(category,amount,message,date,month,year))
+        cur.execute(query,(kwargs['category'],kwargs['amount'],kwargs['message'],date,date.month,date.year))
     conn.commit()
     conn.close()
 
-def delete_element_in_db(membership:str,category,description="",month="",year=""):
+def delete_element_in_db(*args,**kwargs):
     '''
     deletes expenditures/budgets in the database
     '''
     conn=db.connect("expense.db")
     cur=conn.cursor()
+    date=parser.parse('01-'+kwargs['month']+'-'+kwargs['year'],dayfirst=True)  
     query_create_db='''
-    CREATE TABLE '{}' (category STRING, amount NUMBER, message STRING, date STRING,month STRING, year NUMBER)'''.format(membership)
-    query='''
-        DELETE FROM '{}' WHERE category='{}' AND message ='{}' AND month='{}' AND year='{}'
-    '''.format(membership,category,description, month, year)
+    CREATE TABLE '{}' (category STRING, amount NUMBER, message STRING, date STRING,month STRING, year NUMBER)'''.format(args[0])
+    if args[0]=='budget':
+        query='''
+            DELETE FROM '{}' WHERE category='{}' AND month='{}' AND year='{}'
+        '''.format(args[0],kwargs['category'], date.month,date.year)
+    else:
+        query='''
+            DELETE FROM '{}' WHERE category='{}' AND amount={} AND month='{}' AND year='{}'
+        '''.format(args[0],kwargs['category'],kwargs['amount'], date.month,date.year)
     try:
         cur.execute(
-        ''' SELECT count(name) FROM sqlite_master WHERE type='table' AND name='{}' '''.format(membership))
+        ''' SELECT count(name) FROM sqlite_master WHERE type='table' AND name='{}' '''.format(args[0]))
         if cur.fetchone()[0] < 1:
             cur.execute(query_create_db)
         else: 
@@ -61,7 +69,7 @@ def data_db(membership,query=None):
     conn=db.connect('expense.db')
     cur=conn.cursor()
     query_create_db='''
-    CREATE TABLE '{}'(category STRING, amount NUMBER, message STRING, date STRING,period STRING )'''.format(membership)
+    CREATE TABLE '{}'(category STRING, amount NUMBER, message STRING, date STRING,month STRING,year STRING )'''.format(membership)
     query_select_all='''    SELECT * FROM '{}' '''.format(membership)
     cur.execute(
         ''' SELECT count(name) FROM sqlite_master WHERE type='table' AND name='{}' '''.format(membership))
@@ -80,3 +88,4 @@ def data_db(membership,query=None):
     results=cur.fetchall()
     conn.close()
     return results
+

@@ -13,7 +13,9 @@ class ViewerCategorizer(View):
             elif select.lower() in 'b':
                 super().view_barchart(self.membership)
         else :
-            print('View the whole Budget and expense Comparison')
-            super().view_budget_to_expense()
-
+            try:
+                print('View the whole Budget and expense Comparison')
+                super().view_budget_to_expense()
+            except Exception:
+                print('There is nothing to plot :( Insert some values first ;)')
     
