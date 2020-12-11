@@ -2,7 +2,7 @@ import sqlite3 as db
 import datetime
 from interfaces import Transaction
 from viewercategorizer import ViewerCategorizer
-from help_functions import add_element_in_db,delete_element_in_db
+from help_functions import add_element_in_db,delete_element_in_db,questioner
 
 
 class Budget(Transaction,ViewerCategorizer):
@@ -14,8 +14,7 @@ class Budget(Transaction,ViewerCategorizer):
         """
         Asks for add or deletion of a Budget in a Loop
         """
-        print('Create (C) / Delete (D) / View (V) Budget? C:D:V')
-        select=str(input())
+        select=questioner('Create (C) / Delete (D) / View (V) Budget? C:D:V',input_needed=True)
         if select.lower() in 'create':
             self.add_element()
         elif select.lower() in 'delete':
@@ -23,16 +22,14 @@ class Budget(Transaction,ViewerCategorizer):
         else:
             super().view_loop()
     def add_element(self):
-        print('Enter your Budget for every month in following format (Type a category or "ALL" for everything): category/amount/message/month/year :')
-        print('Possible Categories are : Transport | Household | Abos | Restaurants | Education | Food | Family | Entertainment | Shopping | Investment | Health | Leisure | Other')
+        inputs=questioner('Enter your Budget for every month in following format (Type a category or "ALL" for everything): category/amount/message/month/year :','Possible Categories are : Transport | Household | Abos | Restaurants | Education | Food | Family | Entertainment | Shopping | Investment | Health | Leisure | Other',input_needed=True)
         add='y'
         while add.lower() in ['yes','y']:
             try:
-                inputs= input().split('/')
+                inputs= inputs.split('/')
                 if len(inputs)==5:  
                     add_element_in_db('budget',category=inputs[0],amount=inputs[1],message=inputs[2],month=inputs[3],year=inputs[4])
-                    print('Do you want to add more?')
-                    add=str(input()) 
+                    add=questioner('Do you want to add more?',input_needed=True)  
                 else: 
                     raise Exception
             except Exception:
@@ -40,16 +37,14 @@ class Budget(Transaction,ViewerCategorizer):
                 add=str(input()) 
 
     def delete_element(self):
-        print('Delete your Budget in following format (Type a category or "ALL" for everything): category/month/year :')
-        print('Categories are : Transport | Household | Abos | Restaurants | Education | Food | Family | Entertainment | Shopping | Investment | Health | Leisure | Other')
+        inputs=questioner('Delete your Budget in following format (Type a category or "ALL" for everything): category/month/year :','Categories are : Transport | Household | Abos | Restaurants | Education | Food | Family | Entertainment | Shopping | Investment | Health | Leisure | Other',input_needed=True)
         delete='y'
         while delete in ['yes','y']:
             try:
-                inputs=input().split('/')
+                inputs=inputs.split('/')
                 if len(inputs)==3:  
                     delete_element_in_db('budget',category=inputs[0],month=inputs[1],year=inputs[2])
-                    print('Do you want to delete more?')
-                    delete=str(input())
+                    delete=questioner('Do you want to delete more?',input_needed=True)
                 else: 
                     raise Exception
             except Exception:

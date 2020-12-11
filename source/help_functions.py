@@ -89,3 +89,9 @@ def data_db(membership,query=None):
     conn.close()
     return results
 
+def questioner(*args,input_needed=False):
+    print(*args,sep="\n")
+    if input_needed:
+        return str(input())
+    return "500"
+

@@ -1,4 +1,5 @@
 from viewer import View
+from help_functions import questioner
 
 class ViewerCategorizer(View):
     def __init__(self,membership=''):
@@ -6,8 +7,7 @@ class ViewerCategorizer(View):
 
     def view_loop(self):
         if self.membership:
-            print('View the whole {} (A) / View a Barchart (B) ?'.format(self.membership))
-            select=str(input())
+            select=questioner('View the whole {} (A) / View a Barchart (B) ?'.format(self.membership),input_needed=True)
             if select.lower() in 'a':
                 super().view_results(self.membership)
             elif select.lower() in 'b':
