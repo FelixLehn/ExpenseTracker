@@ -2,6 +2,7 @@ from help_functions import data_db
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import dateutil.parser as parser
 
 class View():
     def __init__(self):
@@ -12,13 +13,31 @@ class View():
         for entry in results:
             print(('\t|\t'.join([str(e) for e in entry])))
     
-    def view_barchart(self,membership,month="",year=""):
-        query='''SELECT category, sum(amount)
+    def view_barchart(self,*args,**kwargs):
+        if kwargs.keys():
+            if list(kwargs.keys())[0]=='month':
+                date=parser.parse('01'+'-'+kwargs['month']+'-'+'2020',dayfirst=True) 
+                query='''SELECT category, sum(amount)
+                    FROM {0}
+                    WHERE month={1}
+                    GROUP BY category 
+                    ORDER BY sum(amount) DESC
+                    '''.format(args[0],date.month)
+            else:
+                query='''SELECT category, sum(amount)
+                    FROM {0}
+                    WHERE category='{1}'
+                    GROUP BY month 
+                    ORDER BY sum(amount) DESC
+                    '''.format(args[0],kwargs['category'])
+        
+        else:
+            query='''SELECT category, sum(amount)
                 FROM {0}
                 GROUP BY category 
                 ORDER BY sum(amount) DESC
-                '''.format(membership)
-        category,amount=list(zip(*data_db(membership,query)))
+                '''.format(args[0])
+        category,amount=list(zip(*data_db(args[0],query)))
         y_pos = np.arange(len(category))
 
         plt.bar(y_pos, amount, align='center', alpha=0.5)

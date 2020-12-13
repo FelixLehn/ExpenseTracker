@@ -23,10 +23,10 @@ def add_element_in_db(*args,**kwargs):
         ''' SELECT count(name) FROM sqlite_master WHERE type='table' AND name='{}' '''.format(args[0]))
     if cur.fetchone()[0] < 1:
         cur.execute(query_create_db)
-        cur.execute(query,(kwargs['category'],kwargs['amount'],kwargs['message'],date,date.month,date.year))
+        cur.execute(query,(kwargs['category'].lower(),kwargs['amount'],kwargs['message'],date,date.month,date.year))
 
     else:
-        cur.execute(query,(kwargs['category'],kwargs['amount'],kwargs['message'],date,date.month,date.year))
+        cur.execute(query,(kwargs['category'].lower(),kwargs['amount'],kwargs['message'],date,date.month,date.year))
     conn.commit()
     conn.close()
 
@@ -42,11 +42,11 @@ def delete_element_in_db(*args,**kwargs):
     if args[0]=='budget':
         query='''
             DELETE FROM '{}' WHERE category='{}' AND month='{}' AND year='{}'
-        '''.format(args[0],kwargs['category'], date.month,date.year)
+        '''.format(args[0],kwargs['category'].lower(), date.month,date.year)
     else:
         query='''
             DELETE FROM '{}' WHERE category='{}' AND amount={} AND month='{}' AND year='{}'
-        '''.format(args[0],kwargs['category'],kwargs['amount'], date.month,date.year)
+        '''.format(args[0],kwargs['category'].lower(),kwargs['amount'], date.month,date.year)
     try:
         cur.execute(
         ''' SELECT count(name) FROM sqlite_master WHERE type='table' AND name='{}' '''.format(args[0]))
