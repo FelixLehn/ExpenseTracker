@@ -20,10 +20,7 @@ After defining the ubiquitous language the next step is to define the whole mode
 For View the name of the given Domain is a good identity, as it specifies the corresponding visualization of budget or expenditures or both. This gives a hint for the association. View can have more than one expenditure to visualize and expenditure can have more than just one view. Next to that there is also a unidirectional association between budget and view, because a budget can have more than just one view, but view can have just one budget to visualize, as budget should be set at the beginning of the year/month. A good identity for expenditure and budget is the time to which they are corresponding and also the category. 
 
 ## Aggregates
-
+Budget and Visualization are changing over the year. Budget is mostly changing every month. So we declare a aggregate root Budget with one entity, which changes/adds/deletes the budget. In Visualization there is a aggregate root, which controls the data flow into its domain. After that it can apply some visualization based on that input. This means that the aggregate ViewCategorizer has the entity view. Given the expenses, which are immutable, because they are created just once, the expense domain has just an aggregate root with a value object. 
 
 ## Repositories
-
-
-## Creation of aggregates
-
+By looking at the repositories every aggregate needs a repository. But it is just the budget and the expense which needs to update the repositories. Therefore these two get a repository. The Visualization don't need to update or add/delete something in the repository. It can ask the budget and expense aggregate for the data in their repository. 
