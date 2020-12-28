@@ -13,7 +13,7 @@ def add_element_in_db(*args,**kwargs):
 
     date=datetime.date.today()
     year,month=(date.year,date.month) if len(kwargs.values())<5 else (kwargs['year'],kwargs['month'])
-    date=parser.parse(str(date.day)+'-'+month+'-'+year,dayfirst=True) 
+    date=parser.parse(str(date.day)+'-'+str(month)+'-'+str(year),dayfirst=True) 
     conn=db.connect("expense.db")
     cur=conn.cursor()
     query_create_db='''
@@ -94,4 +94,36 @@ def questioner(*args,input_needed=False):
     if input_needed:
         return str(input())
     return "500"
+
+member={
+        'budget':[5,3],
+        'expenditures':[3,4]
+    }
+
+def add_element(membership,message):
+    inputs=questioner(*message,input_needed=True)
+    add='y'
+
+    while add.lower() in ['yes','y']:
+        try:
+            inputs= inputs.split('/')
+            if len(inputs)!=member[membership][0]:  
+                raise Exception
+            return inputs
+
+        except Exception:
+            print('Your format was NOT correct. Try again (t) or quit (q)!')
+            add=str(input()) 
+def delete_element(membership,message):
+        inputs=questioner(*message,input_needed=True)
+        delete='y'
+        while delete in ['yes','y']:
+            try:
+                inputs=inputs.split('/')
+                if len(inputs)!=member[membership][1]:  
+                    raise Exception
+                return inputs
+            except Exception:
+                print('Your format was NOT correct. Try again (t) or quit (q)!')
+                delete=str(input()) 
 

@@ -12,11 +12,11 @@ class Transaction(metaclass=ABCMeta):
                 NotImplemented)
 
     @abstractmethod
-    def add_element(self,category,amount, description, month,year):
+    def add(self,category,amount, description, month,year):
         raise NotImplementedError
 
     @abstractmethod
-    def delete_element(self,category,amount, description, month,year):
+    def delete(self,category,amount, description, month,year):
         raise NotImplementedError
 
     @abstractmethod

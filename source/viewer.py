@@ -12,6 +12,7 @@ class View():
         results= data_db(membership)
         for entry in results:
             print(('\t|\t'.join([str(e) for e in entry])))
+        return "200"
     
     def view_barchart(self,*args,**kwargs):
         if kwargs.keys():
@@ -30,6 +31,7 @@ class View():
                     GROUP BY month 
                     ORDER BY sum(amount) DESC
                     '''.format(args[0],kwargs['category'])
+
         
         else:
             query='''SELECT category, sum(amount)
@@ -45,6 +47,8 @@ class View():
         plt.ylabel('Total amount')
         plt.title('Budget in a month')
         plt.show()
+        return "200"
+
     def view_budget_to_expense(self):
         query_budget='''SELECT category, sum(amount)
                 FROM budget
@@ -62,3 +66,5 @@ class View():
         category_amount_matrix=pd.merge(budget,expense,on='category', how='outer').fillna(value=0)
         category_amount_matrix.plot.bar(x='category',y=['budget','expense'])
         plt.show()
+        return "200"
+
