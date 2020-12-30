@@ -2,7 +2,7 @@ import unittest
 from unittest.mock import patch, MagicMock
 import sys
 import os
-sys.path.insert(0, os.path.abspath('.'))
+sys.path.append(os.getcwd() +"//src")
 
 from src.help_functions import questioner
 

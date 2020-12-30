@@ -2,8 +2,7 @@ import unittest
 from unittest.mock import patch 
 import sys
 import os
-sys.path.insert(0, os.path.abspath('.'))
-sys.path.insert(0, os.path.abspath('.\src'))
+sys.path.append(os.getcwd() +"//src")
 from src.viewer import View
 
 class ViewerTest(unittest.TestCase):
