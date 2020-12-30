@@ -107,28 +107,20 @@ member={
 
 def add_element(membership,message):
     inputs=questioner(*message,input_needed=True)
-    add='y'
+    inputs= inputs.split('/')
+    if len(inputs)!=member[membership][0]:  
+        return "400"
+    elif any(map(lambda x: not x,inputs)):
+        return "400"
+    return inputs
 
-    while add.lower() in ['yes','y']:
-        try:
-            inputs= inputs.split('/')
-            if len(inputs)!=member[membership][0]:  
-                raise Exception
-            return inputs
-
-        except Exception:
-            print('Your format was NOT correct. Try again (t) or quit (q)!')
-            add=str(input()) 
 def delete_element(membership,message):
-        inputs=questioner(*message,input_needed=True)
-        delete='y'
-        while delete in ['yes','y']:
-            try:
-                inputs=inputs.split('/')
-                if len(inputs)!=member[membership][1]:  
-                    raise Exception
-                return inputs
-            except Exception:
-                print('Your format was NOT correct. Try again (t) or quit (q)!')
-                delete=str(input()) 
+    inputs=questioner(*message,input_needed=True)
+    inputs=inputs.split('/')
+    if len(inputs)!=member[membership][1]:  
+        return "400"
+    elif any(map(lambda x: not x,inputs)):
+        return "400"
+    return inputs
+
 

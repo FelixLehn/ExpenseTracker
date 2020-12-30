@@ -13,9 +13,9 @@ class Controller():
         while b_or_e.lower()!='q':
             b_or_e=questioner('Create/Delete/View a Budget (press B) | Add/Delete/View an Expenditure (Press E) | view everything(Press V) | Quit (Press Q)?',input_needed=True)
             if b_or_e.lower() == 'b':
-                Budget()
+                Budget().loop()
             elif b_or_e.lower() == 'e':
-                Expense()
+                Expense().loop()
             elif b_or_e.lower() == 'v':
                 ViewerCategorizer().view_loop()
 def main():

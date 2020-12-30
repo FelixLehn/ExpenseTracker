@@ -8,7 +8,6 @@ from help_functions import add_element_in_db,delete_element_in_db,questioner,dat
 class Budget(Transaction,ViewerCategorizer):
     def __init__(self):
         super().__init__('budget')
-        self.loop()
     def loop(self):
         """
         Asks for add or deletion of a Budget in a Loop
@@ -25,25 +24,32 @@ class Budget(Transaction,ViewerCategorizer):
         add='yes'
         while add.lower() in ['yes']:
             inputs=add_element('budget',message)
-            bud=self.add_category(inputs[0])\
-                    .add_amount(inputs[1])\
-                    .add_message(inputs[2])\
-                    .add_month(inputs[3])\
-                    .add_year(inputs[4])
-            add_element_in_db('budget',category=bud.category,amount=bud.amount,message=bud.message,month=bud.month,year=bud.year)
-            add=questioner('Do you want to add more?', input_needed=True)
-
+            if inputs!="400":
+                bud=self.add_category(inputs[0])\
+                        .add_amount(inputs[1])\
+                        .add_message(inputs[2])\
+                        .add_month(inputs[3])\
+                        .add_year(inputs[4])
+                add_element_in_db('budget',category=bud.category,amount=bud.amount,message=bud.message,month=bud.month,year=bud.year)
+                add=questioner('Do you want to add more?', input_needed=True)
+            else: 
+                add=questioner('Format was not correct! Do you want to try again?', input_needed=True)
+        return "200"
     def delete(self):
         message=['Delete your Budget in following format (Type a category or "ALL" for everything): category/month/year :','Categories are : Transport | Household | Abos | Restaurants | Education | Food | Family | Entertainment | Shopping | Investment | Health | Leisure | Other']
         delete='y'
         while delete.lower() in ['yes']:
             inputs=delete_element('budget',message)
-            bud=self.add_category(inputs[0])\
-                .add_month(inputs[1])\
-                .add_year(inputs[2])
-            delete_element_in_db('budget',category=bud.category,month=bud.month,year=bud.year)
-            delete=questioner('Dow you want to delete more?',input_needed=True )
-    
+            if inputs!="400":
+                bud=self.add_category(inputs[0])\
+                    .add_month(inputs[1])\
+                    .add_year(inputs[2])
+                delete_element_in_db('budget',category=bud.category,month=bud.month,year=bud.year)
+                delete=questioner('Dow you want to delete more?',input_needed=True )
+            else: 
+                delete=questioner('Format was not correct! Do you want to try again?', input_needed=True)
+        
+        return "200"
     def add_category(self,category):
         self.category=category
         return self
