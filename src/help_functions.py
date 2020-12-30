@@ -73,21 +73,26 @@ def data_db(membership,query=None):
     query_select_all='''    SELECT * FROM '{}' '''.format(membership)
     cur.execute(
         ''' SELECT count(name) FROM sqlite_master WHERE type='table' AND name='{}' '''.format(membership))
-    if cur.fetchone()[0] < 1:
-        cur.execute(query_create_db)
-    else:
-        if query:
-            if isinstance(query,list):
-                cur.execute(query[0],*query[1])
-            else:
-                cur.execute(query)
+    try:
 
-        else: 
-            cur.execute(query_select_all)
-    conn.commit()
-    results=cur.fetchall()
-    conn.close()
-    return results
+        if cur.fetchone()[0] < 1:
+            cur.execute(query_create_db)
+        else:
+            if query:
+                if isinstance(query,list):
+                    cur.execute(query[0],*query[1])
+                else:
+                    cur.execute(query)
+
+            else: 
+                cur.execute(query_select_all)
+        conn.commit()
+        results=cur.fetchall()
+        return results
+    except Exception as e:
+        print(e)
+    finally:
+        conn.close()
 
 def questioner(*args,input_needed=False):
     print(*args,sep="\n")
