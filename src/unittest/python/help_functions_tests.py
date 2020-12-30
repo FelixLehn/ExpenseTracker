@@ -2,9 +2,9 @@ import unittest
 from unittest.mock import patch, MagicMock
 import sys
 import os
-sys.path.append(os.getcwd() +"//src")
+sys.path.append(os.getcwd() +"//src//main//python")
 
-from src.help_functions import questioner
+from help_functions import questioner
 
 class QuestionerTest(unittest.TestCase):
 

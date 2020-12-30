@@ -2,8 +2,8 @@ import unittest
 from unittest.mock import patch 
 import sys
 import os
-sys.path.append(os.getcwd() +"//src")
-from src.viewer import View
+sys.path.append(os.getcwd() +"//src//main//python")
+from viewer import View
 
 class ViewerTest(unittest.TestCase):
     def testresults(self):
