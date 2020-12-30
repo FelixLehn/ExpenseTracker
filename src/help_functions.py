@@ -7,8 +7,8 @@ def add_element_in_db(*args,**kwargs):
     adds expenditures/budgets in the database
 
     Input: 
-    membership -> budget or expenses
-    period -> month or year
+    args -> budget or expenses
+    kwargs -> month,year,message,category,amount
     '''
 
     date=datetime.date.today()
