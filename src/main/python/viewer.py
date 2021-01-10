@@ -73,7 +73,7 @@ class View():
         expense=pd.DataFrame(data_db('expenditures',query_expense),columns=['category','expense'])
         expense['expense']=expense['expense'].abs()
         category_amount_matrix=pd.merge(budget,expense,on='category', how='outer').fillna(value=0)
-        if category_amount_matrix:
+        if category_amount_matrix.empty:
             category_amount_matrix.plot.bar(x='category',y=['budget','expense'])
             plt.show()
         return "200"
