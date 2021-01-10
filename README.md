@@ -6,9 +6,10 @@ Have Fun with the program!
 
 ## UML Diagrams
 The Diagrams can be found in here: 
-
+https://github.com/FelixLehn/ExpenseTracker/tree/main/docs/UML
 ## DDD - Domain Driven Design
 The DDD-Diagram and the descirption can be found in here: 
+https://github.com/FelixLehn/ExpenseTracker/tree/main/docs/DDD
 
 ## Metrics
 The metrics can be found in here: 
