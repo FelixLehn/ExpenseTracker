@@ -28,6 +28,7 @@ https://github.com/FelixLehn/ExpenseTracker/tree/main/src/unittest/python
 
 ## Continous Delivery
 The pipeline for the continoues delivery can be found in here: 
+https://github.com/FelixLehn/ExpenseTracker/blob/main/.github/workflows/python-app.yml
 
 ## IDE
 The IDE-Description can be found in here:
