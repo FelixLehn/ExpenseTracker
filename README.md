@@ -32,6 +32,7 @@ https://github.com/FelixLehn/ExpenseTracker/blob/main/.github/workflows/python-a
 
 ## IDE
 The IDE-Description can be found in here:
+https://github.com/FelixLehn/ExpenseTracker/blob/main/docs/IDE
 
 ## DSL-Demo
 The DSL-Demo can be found in here: 
