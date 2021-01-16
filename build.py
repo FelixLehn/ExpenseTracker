@@ -8,7 +8,7 @@ use_plugin("python.coverage")
 use_plugin("python.distutils")
 use_plugin("python.sonarqube")
 use_plugin('python.integrationtest')
-use_plugin('python.source_distribution')
+use_plugin('source_distribution')
 
 default_task = ["clean", "install_dependencies", "analyze"]
 
