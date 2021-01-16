@@ -94,6 +94,9 @@ def data_db(membership,query=None):
     finally:
         conn.close()
 
+def printer(_function,*args,input_needed=False):
+    return _function(*args,input_needed)
+
 def questioner(*args,input_needed=False):
     print(*args,sep="\n")
     if input_needed:
@@ -106,7 +109,7 @@ member={
     }
 
 def add_element(membership,message):
-    inputs=questioner(*message,input_needed=True)
+    inputs=printer(questioner(),*message,input_needed=True)
     inputs= inputs.split('/')
     if len(inputs)!=member[membership][0]:  
         return "400"
