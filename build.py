@@ -31,7 +31,7 @@ def set_properties(project):
     project.build_depends_on("coverage")
     project.build_depends_on_requirements("requirements.txt")
      
-    project.set_property("dir_source_unittest_python", "src/unittest/python")
+    project.set_property("dir_source_unittest_python", "src/unittest/python/")
     project.set_property("dir_source_integrationtest_python", "src/integrationtest/python")
     project.set_property("integrationtest_parallel",True) 
     project.set_property("flake8_break_build",False)
@@ -39,8 +39,6 @@ def set_properties(project):
     project.set_property("coverage_break_build", False)
     project.set_property("coverage_threshold_warn",75)
     
-    project.set_property("flake8_include_test_sources",True)
-    project.get_property("distutils_commands").append('bdist_wheels')
     project.set_property("distutils_classifiers", [
         "Programming Language :: Python",
         "Programming Language :: Python :: Implementation :: CPython",
