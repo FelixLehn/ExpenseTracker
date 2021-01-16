@@ -22,7 +22,7 @@ class Budget(Transaction,ViewerCategorizer):
     def add(self):
         message='Enter your Budget for every month in following format (Type a category or "ALL" for everything): category/amount/message/month/year :','Possible Categories are : Transport | Household | Abos | Restaurants | Education | Food | Family | Entertainment | Shopping | Investment | Health | Leisure | Other'
         add='yes'
-        while add.lower() in ['yes']:
+        while add.lower() in 'yes':
             inputs=add_element('budget',message)
             if inputs!="400":
                 bud=self.add_category(inputs[0])\
@@ -38,7 +38,7 @@ class Budget(Transaction,ViewerCategorizer):
     def delete(self):
         message=['Delete your Budget in following format (Type a category or "ALL" for everything): category/month/year :','Categories are : Transport | Household | Abos | Restaurants | Education | Food | Family | Entertainment | Shopping | Investment | Health | Leisure | Other']
         delete='y'
-        while delete.lower() in ['yes']:
+        while delete.lower() in 'yes':
             inputs=delete_element('budget',message)
             if inputs!="400":
                 bud=self.add_category(inputs[0])\

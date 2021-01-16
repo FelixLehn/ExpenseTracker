@@ -94,35 +94,46 @@ def data_db(membership,query=None):
     finally:
         conn.close()
 
-def printer(_function,*args,input_needed=False):
-    return _function(*args,input_needed)
-
+def printer(_function,*args,input_needed=False,member=None):
+    if member:
+        args_new=(member.upper(),) + args
+    else:
+        args_new=args
+    return _function(*args_new,input_needed=input_needed)
+ 
 def questioner(*args,input_needed=False):
     print(*args,sep="\n")
     if input_needed:
         return str(input())
     return "500"
 
+def answer(*args,input_needed=False):
+    print(*args,sep="\n")
+    return "200"
 member={
         'budget':[5,3],
         'expenditures':[3,4]
     }
 
 def add_element(membership,message):
-    inputs=printer(questioner(),*message,input_needed=True)
+    inputs=printer(questioner,*message,input_needed=True,member=membership)
     inputs= inputs.split('/')
     if len(inputs)!=member[membership][0]:  
+        printer(answer,"The length of the format input is not the same as in the predefined dict",member=membership)
         return "400"
     elif any(map(lambda x: not x,inputs)):
+        printer(answer,"You missed an input between the || brackets",member=membership)
         return "400"
     return inputs
 
 def delete_element(membership,message):
-    inputs=questioner(*message,input_needed=True)
+    inputs=printer(questioner,*message,input_needed=True,member=membership)
     inputs=inputs.split('/')
     if len(inputs)!=member[membership][1]:  
+        printer(answer,"The length of the format input is not the same as in the predefined dict",member=membership)
         return "400"
     elif any(map(lambda x: not x,inputs)):
+        printer(answer,"You missed an input between the || brackets",member=membership)
         return "400"
     return inputs
 
