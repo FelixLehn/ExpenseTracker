@@ -30,7 +30,6 @@ default_task = "publish"
 def set_properties(project):
     project.build_depends_on("coverage")
     project.build_depends_on_requirements("requirements.txt")
-    #project.depends_on("unittest")
     
     project.set_property("dir_source_unittest_python", "src/unittest/python")
     project.set_property("dir_source_integrationtest_python", "src(integrationtest/python")
