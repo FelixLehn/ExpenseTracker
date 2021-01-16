@@ -42,7 +42,7 @@ def set_properties(project):
     
     project.set_property("flake8_include_test_sources",True)
     project.get_property("distutils_commands").append('bdist_wheels')
-     project.set_property("distutils_classifiers", [
+    project.set_property("distutils_classifiers", [
         "Programming Language :: Python",
         "Programming Language :: Python :: Implementation :: CPython",
         "Programming Language :: Python :: Implementation :: PyPy",
