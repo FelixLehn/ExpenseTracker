@@ -30,6 +30,7 @@ As mentioned in the previous subaspect "The use of higher order functions", func
 
 ## Use closures/anonymous functions
 A anonymous function or closure is also used in higher-order function. It is a function which is not bound to an identifier. 
+
 ![Closure/anonymous Function](/docs/Assets/FP_closure.png)
 
 In this example code snippet there is a closure used in a higher-order function. The higher-order function is the map() and the anonymous function the lambda function. You can also see another higher-order function printer(). It gets the function answer() as parameter.                   
