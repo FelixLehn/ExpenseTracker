@@ -39,4 +39,5 @@ The DSL-Demo can be found in here:
 
 ## Functional Programming
 The functioanl programming aspects and its examples can be found in here: 
+https://github.com/FelixLehn/ExpenseTracker/blob/main/docs/Functional_Programming/FP_Aspects.md
 
