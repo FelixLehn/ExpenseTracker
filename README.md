@@ -20,7 +20,11 @@ The Clean Code Cheet Sheet with code snippets as example from the code can be fo
 https://github.com/FelixLehn/ExpenseTracker/tree/main/docs/Clean_Code_Development
 
 ## Build Management
-The Build Management can be found in here:
+The Build Management can be found in here: 
+- build.py https://github.com/FelixLehn/ExpenseTracker/blob/main/build.py
+- setup.py https://github.com/FelixLehn/ExpenseTracker/blob/main/setup.py
+- pyproject.toml https://github.com/FelixLehn/ExpenseTracker/blob/main/pyproject.toml
+
 
 ## Unit-Tests
 The Unit-Tests can be found in here: 
@@ -39,4 +43,5 @@ The DSL-Demo can be found in here:
 
 ## Functional Programming
 The functioanl programming aspects and its examples can be found in here: 
+https://github.com/FelixLehn/ExpenseTracker/blob/main/docs/Functional_Programming/FP_Aspects.md
 
