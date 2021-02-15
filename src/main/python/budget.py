@@ -50,6 +50,7 @@ class Budget(Transaction,ViewerCategorizer):
                 delete=questioner('Format was not correct! Do you want to try again?', input_needed=True)
         
         return "200"
+    
     def add_category(self,category):
         self.category=category
         return self
@@ -61,14 +62,17 @@ class Budget(Transaction,ViewerCategorizer):
     def add_month(self,month):
         self.month=str(month)
         return self
+    
     def add_year(self,year): 
         self.year=str(year)
         return self
+    
     def add_message(self,message):
         self.message=message
         return self
-    def getValue(self):
-        return self 
+    
+    def __str__(self):
+        return "{Budget_"+self.category+"=>["+self.amount+","+self.message+" for "+self.month+"."+self.year +"}"
     
 
         

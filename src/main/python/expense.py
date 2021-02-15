@@ -65,5 +65,6 @@ class Expense(Transaction,ViewerCategorizer):
         self.message=message
         return self
 
-    def getValue(self):
-        return self 
+    def __str__(self):
+        return "{Expense_"+self.category+"=>["+self.amount+","+self.message+" for "+self.month+"."+self.year +"}"
+    
