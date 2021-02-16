@@ -1,10 +1,16 @@
 from interfaces import Transaction
 from viewercategorizer import ViewerCategorizer
 from help_functions import add_element_in_db,delete_element_in_db,questioner,add_element,delete_element
+import datetime
 
 class Expense(Transaction,ViewerCategorizer):
     def __init__(self):
         super().__init__('expenditures')
+        date=datetime.date.today()
+        self.add_month(date.month)
+        self.add_year(date.year)
+        self.add_message("Nothing in here")
+
     def loop(self):
         select=questioner('Add (A) / Delete (D) / View (V) an expenditures? A/D/V:',input_needed=True)
         if select.lower() in 'a':
@@ -24,6 +30,7 @@ class Expense(Transaction,ViewerCategorizer):
                         .add_amount(inputs[1])\
                         .add_message(inputs[2])
                 add_element_in_db('expenditures',category=exp.category,amount=exp.amount,message=exp.message)
+                print('ADD:'+self.__str__())
                 add=questioner('Do you want to add more?', input_needed=True)
             else: 
                 add=questioner('Format was not correct! Do you want to try again?', input_needed=True)
@@ -40,6 +47,7 @@ class Expense(Transaction,ViewerCategorizer):
                     .add_month(inputs[2])\
                     .add_year(inputs[3])
                 delete_element_in_db('expenditures',category=exp.category,amount=exp.amount,month=exp.month,year=exp.year)
+                print('DELETE:'+self.__str__())                
                 delete=questioner('Do you want to delete more?',input_needed=True)
             else: 
                 delete=questioner('Format was not correct! Do you want to try again?', input_needed=True)
@@ -66,5 +74,5 @@ class Expense(Transaction,ViewerCategorizer):
         return self
 
     def __str__(self):
-        return "{Expense_"+self.category+"=>["+self.amount+","+self.message+" for "+self.month+"."+self.year +"}"
+        return "{Expense_"+self.category+"=>["+str(self.amount)+","+self.message+" for "+self.month+"."+self.year +"}"
     

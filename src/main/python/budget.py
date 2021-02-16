@@ -8,6 +8,8 @@ from help_functions import add_element_in_db,delete_element_in_db,questioner,dat
 class Budget(Transaction,ViewerCategorizer):
     def __init__(self):
         super().__init__('budget')
+        self.add_amount(0)
+        self.add_message('Nothing in here')
     def loop(self):
         """
         Asks for add or deletion of a Budget in a Loop
@@ -31,6 +33,7 @@ class Budget(Transaction,ViewerCategorizer):
                         .add_month(inputs[3])\
                         .add_year(inputs[4])
                 add_element_in_db('budget',category=bud.category,amount=bud.amount,message=bud.message,month=bud.month,year=bud.year)
+                print('ADD:'+self.__str__())
                 add=questioner('Do you want to add more?', input_needed=True)
             else: 
                 add=questioner('Format was not correct! Do you want to try again?', input_needed=True)
@@ -45,6 +48,7 @@ class Budget(Transaction,ViewerCategorizer):
                     .add_month(inputs[1])\
                     .add_year(inputs[2])
                 delete_element_in_db('budget',category=bud.category,month=bud.month,year=bud.year)
+                print('DELETE:'+self.__str__())
                 delete=questioner('Dow you want to delete more?',input_needed=True )
             else: 
                 delete=questioner('Format was not correct! Do you want to try again?', input_needed=True)
@@ -72,7 +76,7 @@ class Budget(Transaction,ViewerCategorizer):
         return self
     
     def __str__(self):
-        return "{Budget_"+self.category+"=>["+self.amount+","+self.message+" for "+self.month+"."+self.year +"}"
+        return "{Budget_"+self.category+"=>["+str(self.amount)+","+self.message+" for "+self.month+"."+self.year +"}"
     
 
         
