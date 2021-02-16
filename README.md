@@ -1,5 +1,5 @@
 # ExpenseTracker
-This is a description of what the Expense Tracker does.
+This is a description of what the ExpenseTracker does.
 
 ## Description
 To start the ExpenseTracker, go to the directoy src/main/python and run this code after installation of the requirements.txt: 
@@ -20,7 +20,7 @@ https://github.com/FelixLehn/ExpenseTracker/tree/main/docs/DDD
 The metrics can be found in here: 
 https://github.com/FelixLehn/ExpenseTracker/tree/main/docs/Sonarqube-Metriken
 
-There are mainly Screenshots from the ExpenseTracker, before and after the final implementation. Another bigger project can also be found in this folder, a SonarQube Metric of an anonymization Tool. 
+There are mainly Screenshots from the ExpenseTracker, before and after the final implementation. Another bigger project can also be found in this folder, a SonarQube Metric of an Anonymization Tool. 
 
 
 ## Clean Code Development:
@@ -33,7 +33,7 @@ The Build Management can be found in here:
 - setup.py https://github.com/FelixLehn/ExpenseTracker/blob/main/setup.py
 - pyproject.toml https://github.com/FelixLehn/ExpenseTracker/blob/main/pyproject.toml
 
-It was created with the pybuilder. This is a powerful Tool, which was created mainly for python and provides a build-automation.
+It was created with the pybuilder. This is a powerful tool, which was created mainly for python and provides a build-automation.
 
 In my build, there are several tasks to do:
 - Checking the Python Version
