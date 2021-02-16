@@ -6,7 +6,7 @@ To start the ExpenseTracker, go to the directoy src/main/python and run this cod
  
 ```python
 python main.py
-```
+``` 
 
 ## UML Diagrams
 The Diagrams can be found in here: 
