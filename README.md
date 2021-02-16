@@ -71,7 +71,7 @@ https://github.com/FelixLehn/ExpenseTracker/blob/main/docs/IDE
 ## DSL-Demo
 The DSL-Demo can be found in here: https://github.com/FelixLehn/ExpenseTracker/blob/main/src/main/python/dsl_example.py
 It uses the predefined Budget Class from the ExpenseTracker. 
-
+ 
 ## Functional Programming
 The functional programming aspects and its examples can be found in here: 
 https://github.com/FelixLehn/ExpenseTracker/blob/main/docs/Functional_Programming/FP_Aspects.md
