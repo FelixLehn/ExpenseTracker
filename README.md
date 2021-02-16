@@ -3,7 +3,7 @@ This is a description of what the ExpenseTracker does.
 
 ## Description
 To start the ExpenseTracker, go to the directoy src/main/python and run this code after installation of the requirements.txt: 
-
+ 
 ```python
 python main.py
 ```
