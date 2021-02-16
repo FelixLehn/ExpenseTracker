@@ -78,6 +78,19 @@ class Budget(Transaction,ViewerCategorizer):
     def __str__(self):
         return "{Budget_"+self.category+"=>["+str(self.amount)+","+self.message+" for "+self.month+"."+self.year +"}"
     
+    def __add__(self,other):
+        if self.month==other.month and self.year==other.year:
+            amount=self.amount+other.amount
+            return f"The Budget for the {self.category} and {other.category} is {amount}"
+        else: 
+            return f"You can not add Budgets with different months or years"
+
+    def __sub__(self,other):    
+        if self.month==other.month and self.year==other.year:
+            amount=self.amount-other.amount
+            return f"The Budget for the {self.category} minus the {other.category} is {amount}"
+        else: 
+            return f"You can not subtract Budgets with different months or years"
 
         
 
